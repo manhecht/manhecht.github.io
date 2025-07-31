@@ -16,12 +16,18 @@ jobs:
         with:
           fetch-depth: 0  # Fetch all history for proper deployment
       
+      # SECURITY NOTE: This workflow uses GitHub Secrets for credentials
+      # The actual credentials are never stored in this file or in the repository
+      # They are securely stored in the GitHub repository settings and injected at runtime
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.FTP_SERVER }}  # Your phpfriends FTP server
-          username: ${{ secrets.FTP_USERNAME }}  # Your phpfriends FTP username
-          password: ${{ secrets.FTP_PASSWORD }}  # Your phpfriends FTP password
+          # These values reference secrets stored securely in GitHub repository settings
+          # The actual values are never exposed in logs or to unauthorized users
+          # Use the IP address you provided, but store it in GitHub Secrets
+          server: ${{ secrets.FTP_SERVER }}  # Should be set to your FTP server IP in GitHub Secrets
+          username: ${{ secrets.FTP_USERNAME }}  # Should be set to 'gitactions' in GitHub Secrets
+          password: ${{ secrets.FTP_PASSWORD }}  # Should be set to your password in GitHub Secrets
           local-dir: ./  # The local directory to deploy
           server-dir: ./  # The directory on the server to deploy to
           exclude: |
