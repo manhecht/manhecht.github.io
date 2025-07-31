@@ -39,14 +39,28 @@ A modern, responsive portfolio website for Manuel Hecht, showcasing creative com
 1. Clone the repository
 2. Open `index.html` in a browser to view locally
 
-### GitHub Pages Deployment
+### GitHub Pages Deployment for manhecht.github.io
 
-This site is configured to be hosted on GitHub Pages. To deploy:
+Since your GitHub username is "manhecht", you can host this site at manhecht.github.io by following these steps:
 
-1. Create a GitHub repository (e.g., `username.github.io` or any repository name)
+#### Option 1: User Site (manhecht.github.io)
+
+1. Create a GitHub repository named exactly `manhecht.github.io`
 2. Push this repository to GitHub:
    ```
-   git remote add origin https://github.com/username/repository-name.git
+   git remote add origin https://github.com/manhecht/manhecht.github.io.git
+   git branch -M main
+   git push -u origin main
+   ```
+3. GitHub Pages is automatically enabled for repositories named `username.github.io`
+4. Your site will be published at `https://manhecht.github.io/`
+
+#### Option 2: Project Site (any repository name)
+
+1. Create a GitHub repository with any name (e.g., `portfolio`)
+2. Push this repository to GitHub:
+   ```
+   git remote add origin https://github.com/manhecht/portfolio.git
    git branch -M main
    git push -u origin main
    ```
@@ -54,7 +68,7 @@ This site is configured to be hosted on GitHub Pages. To deploy:
 4. Navigate to Settings > Pages
 5. Under "Source", select "main" branch
 6. Click Save
-7. Your site will be published at `https://username.github.io/repository-name/`
+7. Your site will be published at `https://manhecht.github.io/portfolio/`
 
 ### Connecting Your Custom Domain (manuelhecht.com) from phpfriends
 
