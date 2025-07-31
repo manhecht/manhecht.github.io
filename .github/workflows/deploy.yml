@@ -31,7 +31,7 @@ jobs:
           protocol: ftps  # Use FTPS (FTP over SSL/TLS) as required by the server
           security: strict  # Use strict security for SSL/TLS
           local-dir: ./  # The local directory to deploy
-          server-dir: ./  # The directory on the server to deploy to
+          server-dir: ./manuelhecht.com/  # The specific directory on the server to deploy to
           exclude: |
             **/.git*
             **/.git*/**

@@ -90,6 +90,8 @@ This repository is configured to automatically deploy to your phpfriends webserv
    **Note:** The deployment is configured to use FTPS (FTP over SSL/TLS) for secure file transfers.
    This is required by your server and provides encrypted communication for better security.
    
+   The deployment is set to upload files to the `manuelhecht.com` directory on your FTP server.
+   
    **IMPORTANT: Never store your actual credentials in the repository code or commit them to git!**
    GitHub Secrets provides encrypted storage specifically designed for sensitive information.
    
