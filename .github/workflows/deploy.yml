@@ -28,6 +28,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}  # Should be set to your FTP server IP in GitHub Secrets
           username: ${{ secrets.FTP_USERNAME }}  # Should be set to 'gitactions' in GitHub Secrets
           password: ${{ secrets.FTP_PASSWORD }}  # Should be set to your password in GitHub Secrets
+          protocol: ftps  # Use FTPS (FTP over SSL/TLS) as required by the server
+          security: strict  # Use strict security for SSL/TLS
           local-dir: ./  # The local directory to deploy
           server-dir: ./  # The directory on the server to deploy to
           exclude: |
