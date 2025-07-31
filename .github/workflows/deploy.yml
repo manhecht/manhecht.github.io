@@ -24,8 +24,8 @@ jobs:
         with:
           # These values reference secrets stored securely in GitHub repository settings
           # The actual values are never exposed in logs or to unauthorized users
-          # Use the IP address you provided, but store it in GitHub Secrets
-          server: ${{ secrets.FTP_SERVER }}  # Should be set to your FTP server IP in GitHub Secrets
+          # Use the correct hostname for the FTP server
+          server: web67551.ssd-space.de  # The correct FTP server hostname
           username: ${{ secrets.FTP_USERNAME }}  # Should be set to 'gitactions' in GitHub Secrets
           password: ${{ secrets.FTP_PASSWORD }}  # Should be set to your password in GitHub Secrets
           protocol: ftps  # Use FTPS (FTP over SSL/TLS) as required by the server

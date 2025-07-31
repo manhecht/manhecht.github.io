@@ -80,12 +80,13 @@ This repository is configured to automatically deploy to your phpfriends webserv
    - Go to your GitHub repository (manhecht.github.io)
    - Navigate to Settings > Secrets and variables > Actions
    - Click on "New repository secret" and add the following secrets:
-     - Name: `FTP_SERVER`
-       Value: Your FTP server IP address
      - Name: `FTP_USERNAME`
        Value: Your FTP username
      - Name: `FTP_PASSWORD`
        Value: Your FTP password
+   
+   **Note:** The server hostname is now hardcoded as `web67551.ssd-space.de` in the workflow file
+   to use the correct FTP server hostname.
    
    **Note:** The deployment is configured to use FTPS (FTP over SSL/TLS) for secure file transfers.
    This is required by your server and provides encrypted communication for better security.
