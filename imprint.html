@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprint | Manuel Hecht | Creative Computing Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to the imprint page */
+        .imprint-header {
+            padding: 150px 0 50px;
+            text-align: center;
+        }
+        
+        .imprint-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .imprint-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .imprint-content {
+            background-color: var(--bg-secondary);
+            border-radius: 10px;
+            padding: 40px;
+            margin-bottom: 100px;
+            box-shadow: 0 10px 30px var(--shadow-color);
+        }
+        
+        .imprint-section {
+            margin-bottom: 40px;
+        }
+        
+        .imprint-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .imprint-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+            border-bottom: 1px solid var(--accent-primary);
+            padding-bottom: 10px;
+        }
+        
+        .imprint-section h3 {
+            font-size: 1.4rem;
+            margin: 25px 0 15px;
+            color: var(--accent-secondary);
+        }
+        
+        .imprint-section p, .imprint-section address {
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .imprint-section a {
+            color: var(--accent-primary);
+            transition: color 0.3s ease;
+        }
+        
+        .imprint-section a:hover {
+            color: var(--accent-secondary);
+        }
+        
+        .imprint-section ul {
+            list-style-type: disc;
+            margin-left: 20px;
+            margin-bottom: 15px;
+            color: var(--text-secondary);
+        }
+        
+        .imprint-section ul li {
+            margin-bottom: 10px;
+        }
+        
+        @media screen and (max-width: 768px) {
+            .imprint-content {
+                padding: 30px 20px;
+            }
+            
+            .imprint-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas for ThreeJS background -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Main content container -->
+    <main>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">Manuel Hecht</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="imprint.html" class="active">Imprint</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- Imprint Header -->
+        <header class="imprint-header">
+            <h1>Imprint</h1>
+            <p>Legal information and contact details</p>
+        </header>
+
+        <!-- Imprint Content -->
+        <div class="imprint-content">
+            <section class="imprint-section">
+                <h2>Information according to § 5 TMG</h2>
+                <address>
+                    Manuel Hecht<br>
+                    Sample Street 123<br>
+                    12345 Vienna<br>
+                    Austria
+                </address>
+                
+                <h3>Contact</h3>
+                <p>
+                    Phone: +43 123 456789<br>
+                    Email: contact@manuelhecht.com
+                </p>
+            </section>
+            
+            <section class="imprint-section">
+                <h2>Responsible for Content</h2>
+                <p>Manuel Hecht<br>
+                Email: content@manuelhecht.com</p>
+                
+                <h3>Liability for Content</h3>
+                <p>As a service provider, I am responsible for my own content on these pages according to general laws. However, I am not obligated to monitor transmitted or stored third-party information or to investigate circumstances that indicate illegal activity.</p>
+                <p>Obligations to remove or block the use of information under general laws remain unaffected. However, liability in this regard is only possible from the point in time at which a concrete infringement of the law becomes known. If I become aware of any such infringements, I will remove the relevant content immediately.</p>
+            </section>
+            
+            <section class="imprint-section">
+                <h2>Liability for Links</h2>
+                <p>My website contains links to external third-party websites, over whose content I have no influence. Therefore, I cannot assume any liability for these external contents. The respective provider or operator of the linked pages is always responsible for the content of the linked pages.</p>
+                <p>The linked pages were checked for possible legal violations at the time of linking. Illegal content was not recognizable at the time of linking. However, permanent monitoring of the content of the linked pages is not reasonable without concrete indications of a legal violation. If I become aware of any legal infringements, I will remove such links immediately.</p>
+            </section>
+            
+            <section class="imprint-section">
+                <h2>Copyright</h2>
+                <p>The content and works created by the site operator on these pages are subject to copyright law. Duplication, processing, distribution, and any kind of exploitation outside the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use.</p>
+                <p>Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please inform me accordingly. If I become aware of any infringements, I will remove such content immediately.</p>
+            </section>
+            
+            <section class="imprint-section">
+                <h2>Data Protection</h2>
+                <p>The use of this website is generally possible without providing personal data. Insofar as personal data (e.g., name, address, or email addresses) is collected on my pages, this is always done on a voluntary basis as far as possible.</p>
+                <p>I would like to point out that data transmission over the Internet (e.g., when communicating by email) may have security gaps. Complete protection of data against access by third parties is not possible.</p>
+                <p>For a complete privacy policy, please refer to the separate privacy policy document.</p>
+            </section>
+        </div>
+    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>&copy; 2025 Manuel Hecht. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:your.email@example.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/three-scene.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

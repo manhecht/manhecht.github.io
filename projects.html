@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Manuel Hecht | Creative Computing Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Additional styles specific to the projects page */
+        .projects-header {
+            padding: 150px 0 50px;
+            text-align: center;
+        }
+        
+        .projects-header h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .projects-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+        
+        .filter-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 50px;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--accent-primary);
+            color: var(--text-primary);
+            padding: 8px 20px;
+            margin: 5px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-primary);
+            color: var(--bg-primary);
+        }
+        
+        .projects-grid {
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            margin-bottom: 100px;
+        }
+        
+        .project-card {
+            position: relative;
+            height: 350px;
+        }
+        
+        .project-image {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        
+        .project-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px;
+            background: linear-gradient(to top, var(--bg-secondary), transparent);
+            transform: translateY(70px);
+            transition: transform 0.3s ease;
+        }
+        
+        .project-card:hover .project-content {
+            transform: translateY(0);
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-card:hover .project-tags {
+            opacity: 1;
+        }
+        
+        .project-tag {
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            margin: 0 5px 5px 0;
+            border-radius: 20px;
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--accent-primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Canvas for ThreeJS background -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Main content container -->
+    <main>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">Manuel Hecht</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="imprint.html">Imprint</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- Projects Header -->
+        <header class="projects-header">
+            <h1>My Projects</h1>
+            <p>A collection of my work in creative computing, digital art, and interactive experiences.</p>
+            
+            <!-- Filter buttons -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="interactive">Interactive</button>
+                <button class="filter-btn" data-filter="visualization">Data Visualization</button>
+                <button class="filter-btn" data-filter="installation">Installations</button>
+                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn" data-filter="ar">AR/VR</button>
+            </div>
+        </header>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projects-container">
+            <!-- Projects will be loaded dynamically from projects.ts -->
+        </div>
+    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>&copy; 2025 Manuel Hecht. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:your.email@example.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/three-scene.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Projects data directly embedded
+        const projects = [
+          {
+            title: 'PAFH',
+            description: 'An indoor navigation assistant for the UAS St.Pölten, that helps students, lecturers and guests to find their way around the campus.',
+            skills: 'Project Management, 3D Modelling, Unity, C#, Prototyping, UI/UX Design',
+            image: '/pafh.jpg',
+            link: '/pafh.jpg'
+          },
+          {
+            title: 'colegio',
+            description: 'A crowdsourcing platform for teachers, to share their teaching material with other teachers.',
+            skills: 'UI/UX Design, User Flows, Adobe XD',
+            image: '/colegio.jpg',
+            link: '/colegio.jpg'
+          },
+          {
+            title: 'Pingo',
+            description: 'Pingo is a location-based-system that offers users to create and join \'Pingos\' to experience special places.',
+            skills: 'NestJS, Angular, SQL, Leaflet',
+            image: '/pingo.jpg',
+            link: 'https://pingo-app.bandy.at/home'
+          },
+          {
+            title: 'Balanced',
+            description: 'Prototyping of a mobile application that helps to balance work, life and studying.',
+            skills: 'Design Thinking, Adobe XD, Prototyping, UI/UX Design',
+            image: '/balanced.jpg',
+            link: '/balanced.jpg'
+          },
+          {
+            title: 'realXplorer',
+            description: 'Interactive Installation exploring Human-AI collaboration.',
+            skills: 'Touchdesigner, Python, Stable Diffusion, Prototyping',
+            image: '/realXplorer.jpg',
+            link: '/realXplorer.jpg'
+          },
+          {
+            title: 'VSL CMS',
+            description: 'A fully customizable CMS for Vienna Symphonic Library GmbH.',
+            skills: 'Nuxt, Vue, Typescript',
+            image: '/vsl.png',
+            link: 'https://www.vsl.co.at/'
+          },
+          {
+            title: 'Flimmerkiste',
+            description: 'A cross-plattform application for streaming tv shows and movies.',
+            skills: 'App Development, Flutter, UI/UX',
+            image: '/flimmerkiste.png',
+            link: '/flimmerkiste.png'
+          },
+          {
+            title: 'Quokka - The Blockchain Lottery',
+            description: 'A smart contract lottery where users can join and win GoerliETH in the Goerli Testnet of the Ethereum-Blockchain.',
+            skills: 'Solidity, ERC20, VueJS, HTML, CSS, Blockchain Technology',
+            image: '/quokka.jpg',
+            link: 'https://it221514.students.fhstp.ac.at/quokka/'
+          },
+          {
+            title: 'Homepage for SKLation',
+            description: 'A website for a local soccer club.',
+            skills: 'Web Development, HTML, CSS, AdobeXD, Adobe Photoshop, UI/UX',
+            image: '/sklation.jpg',
+            link: '/sklation.jpg'
+          },
+          {
+            title: 'PGMon',
+            description: 'A web application where you can spawn pokemons and collect them.',
+            skills: 'Project Management, Web Development, HTML, CSS, JavaScript, VueJS, Java, Spring Framework',
+            image: '/pgmon.png',
+            link: '/pgmon.png'
+          },
+          {
+            title: 'CounterSpeech',
+            description: 'Finding Strategies for Facilitating Counter Speech in Social Media.',
+            skills: 'Python, Data Crawling, Data Science',
+            image: '/counterspeech.jpg',
+            link: 'https://research.fhstp.ac.at/en/projects/counterspeech-young-people-against-online-hate'
+          },
+          {
+            title: 'EXIST Challenge',
+            description: 'Sexism identification und categorization of Tweets in Python and TensorFlow.',
+            skills: 'Python, Natural Language Processing, Data Crawling, Data Science, Data Visualization, TensorFlow, Transformers',
+            image: '/EXIST2022.png',
+            link: 'https://www.researchgate.net/publication/352280581_Automatic_Sexism_Detection_with_Multilingual_Transformer_Models'
+          },
+          {
+            title: 'QuickSpeech',
+            description: 'Automatic Question and Answer Generation using Python.',
+            skills: 'Python, Natural Language Processing, Natural Language Generation, Data Crawling, Data Science',
+            image: '/quickspeech.png',
+            link: 'https://research.fhstp.ac.at/projekte/quickspeech-automatic-question-and-answer-generation'
+          }
+        ];
+        
+        // Function to create project cards
+        function createProjectCard(project) {
+            // Determine categories based on skills
+            const skills = project.skills.toLowerCase();
+            let categories = [];
+            
+            if (skills.includes('unity') || skills.includes('interactive') || skills.includes('ui/ux')) {
+                categories.push('interactive');
+            }
+            if (skills.includes('data') || skills.includes('visualization')) {
+                categories.push('visualization');
+            }
+            if (skills.includes('installation') || skills.includes('prototyping')) {
+                categories.push('installation');
+            }
+            if (skills.includes('web') || skills.includes('html') || skills.includes('css') ||
+                skills.includes('javascript') || skills.includes('vue') || skills.includes('angular') ||
+                skills.includes('nuxt') || skills.includes('react')) {
+                categories.push('web');
+            }
+            if (skills.includes('ar') || skills.includes('vr') || skills.includes('3d')) {
+                categories.push('ar');
+            }
+            
+            // Create card element
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            card.setAttribute('data-category', categories.join(' '));
+            
+            // Create image element
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'project-image';
+            
+            // Check if image path exists and set background image
+            if (project.image) {
+                imageDiv.style.backgroundImage = `url(images${project.image.startsWith('/') ? project.image : '/' + project.image})`;
+                imageDiv.style.backgroundSize = 'cover';
+                imageDiv.style.backgroundPosition = 'center';
+            } else {
+                imageDiv.classList.add('placeholder');
+            }
+            
+            // Create content container
+            const contentDiv = document.createElement('div');
+            contentDiv.className = 'project-content';
+            
+            // Add title
+            const title = document.createElement('h3');
+            title.textContent = project.title;
+            
+            // Add description
+            const description = document.createElement('p');
+            description.textContent = project.description;
+            
+            // Add skills as tags
+            const tagsDiv = document.createElement('div');
+            tagsDiv.className = 'project-tags';
+            
+            // Split skills and create tag elements
+            const skillsList = project.skills.split(',').map(skill => skill.trim());
+            skillsList.forEach(skill => {
+                if (skill) {
+                    const tag = document.createElement('span');
+                    tag.className = 'project-tag';
+                    tag.textContent = skill;
+                    tagsDiv.appendChild(tag);
+                }
+            });
+            
+            // Add link
+            const link = document.createElement('a');
+            link.className = 'project-link';
+            link.textContent = 'View Project';
+            link.href = project.link.startsWith('http') ? project.link : `images${project.link.startsWith('/') ? project.link : '/' + project.link}`;
+            
+            // Assemble the card
+            contentDiv.appendChild(title);
+            contentDiv.appendChild(description);
+            contentDiv.appendChild(tagsDiv);
+            contentDiv.appendChild(link);
+            
+            card.appendChild(imageDiv);
+            card.appendChild(contentDiv);
+            
+            return card;
+        }
+        
+        // Load projects when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM content loaded');
+            const projectsContainer = document.getElementById('projects-container');
+            console.log('Projects container:', projectsContainer);
+            console.log('Projects data:', projects);
+            
+            if (!projectsContainer) {
+                console.error('Projects container not found!');
+                // Create a fallback container if it doesn't exist
+                const fallbackContainer = document.createElement('div');
+                fallbackContainer.id = 'projects-container';
+                fallbackContainer.className = 'projects-grid';
+                document.querySelector('.container').appendChild(fallbackContainer);
+                console.log('Created fallback container');
+            }
+            
+            // Create and append project cards
+            projects.forEach((project, index) => {
+                console.log(`Creating card for project ${index}:`, project.title);
+                const card = createProjectCard(project);
+                document.getElementById('projects-container').appendChild(card);
+                console.log(`Added card for ${project.title}`);
+            });
+            
+            // Project filtering functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    const filter = btn.getAttribute('data-filter');
+                    
+                    // Filter projects
+                    projectCards.forEach(card => {
+                        const categories = card.getAttribute('data-category');
+                        
+                        if (filter === 'all' || categories.includes(filter)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

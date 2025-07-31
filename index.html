@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manuel Hecht | Creative Computing Portfolio</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Canvas for ThreeJS background -->
+    <canvas id="bg-canvas"></canvas>
+    
+    <!-- Main content container -->
+    <main>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">Manuel Hecht</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="imprint.html">Imprint</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+
+        <!-- Hero section -->
+        <section class="hero">
+            <h1>Manuel Hecht</h1>
+            <h2>Creative Computing & Digital Art</h2>
+            <p>Building immersive digital experiences at the intersection of art and technology</p>
+            <a href="projects.html" class="cta-button">View My Work</a>
+        </section>
+
+        <!-- Featured projects section -->
+        <section class="featured-projects">
+            <h2>Featured Projects</h2>
+            <div class="projects-grid" id="featured-projects">
+                <!-- Featured projects will be loaded dynamically from projects.ts -->
+            </div>
+            <a href="projects.html" class="see-all">See All Projects</a>
+        </section>
+    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <p>&copy; 2025 Manuel Hecht. All rights reserved.</p>
+            </div>
+            <div class="footer-right">
+                <a href="https://github.com/yourusername" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="mailto:your.email@example.com">Email</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/three-scene.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Projects data directly embedded
+        const projects = [
+          {
+            title: 'PAFH',
+            description: 'An indoor navigation assistant for the UAS St.Pölten, that helps students, lecturers and guests to find their way around the campus.',
+            skills: 'Project Management, 3D Modelling, Unity, C#, Prototyping, UI/UX Design',
+            image: '/pafh.jpg',
+            link: '/pafh.jpg'
+          },
+          {
+            title: 'colegio',
+            description: 'A crowdsourcing platform for teachers, to share their teaching material with other teachers.',
+            skills: 'UI/UX Design, User Flows, Adobe XD',
+            image: '/colegio.jpg',
+            link: '/colegio.jpg'
+          },
+          {
+            title: 'Pingo',
+            description: 'Pingo is a location-based-system that offers users to create and join \'Pingos\' to experience special places.',
+            skills: 'NestJS, Angular, SQL, Leaflet',
+            image: '/pingo.jpg',
+            link: 'https://pingo-app.bandy.at/home'
+          },
+          {
+            title: 'Balanced',
+            description: 'Prototyping of a mobile application that helps to balance work, life and studying.',
+            skills: 'Design Thinking, Adobe XD, Prototyping, UI/UX Design',
+            image: '/balanced.jpg',
+            link: '/balanced.jpg'
+          },
+          {
+            title: 'realXplorer',
+            description: 'Interactive Installation exploring Human-AI collaboration.',
+            skills: 'Touchdesigner, Python, Stable Diffusion, Prototyping',
+            image: '/realXplorer.jpg',
+            link: '/realXplorer.jpg'
+          },
+          {
+            title: 'VSL CMS',
+            description: 'A fully customizable CMS for Vienna Symphonic Library GmbH.',
+            skills: 'Nuxt, Vue, Typescript',
+            image: '/vsl.png',
+            link: 'https://www.vsl.co.at/'
+          },
+          {
+            title: 'Flimmerkiste',
+            description: 'A cross-plattform application for streaming tv shows and movies.',
+            skills: 'App Development, Flutter, UI/UX',
+            image: '/flimmerkiste.png',
+            link: '/flimmerkiste.png'
+          },
+          {
+            title: 'Quokka - The Blockchain Lottery',
+            description: 'A smart contract lottery where users can join and win GoerliETH in the Goerli Testnet of the Ethereum-Blockchain.',
+            skills: 'Solidity, ERC20, VueJS, HTML, CSS, Blockchain Technology',
+            image: '/quokka.jpg',
+            link: 'https://it221514.students.fhstp.ac.at/quokka/'
+          },
+          {
+            title: 'Homepage for SKLation',
+            description: 'A website for a local soccer club.',
+            skills: 'Web Development, HTML, CSS, AdobeXD, Adobe Photoshop, UI/UX',
+            image: '/sklation.jpg',
+            link: '/sklation.jpg'
+          },
+          {
+            title: 'PGMon',
+            description: 'A web application where you can spawn pokemons and collect them.',
+            skills: 'Project Management, Web Development, HTML, CSS, JavaScript, VueJS, Java, Spring Framework',
+            image: '/pgmon.png',
+            link: '/pgmon.png'
+          },
+          {
+            title: 'CounterSpeech',
+            description: 'Finding Strategies for Facilitating Counter Speech in Social Media.',
+            skills: 'Python, Data Crawling, Data Science',
+            image: '/counterspeech.jpg',
+            link: 'https://research.fhstp.ac.at/en/projects/counterspeech-young-people-against-online-hate'
+          },
+          {
+            title: 'EXIST Challenge',
+            description: 'Sexism identification und categorization of Tweets in Python and TensorFlow.',
+            skills: 'Python, Natural Language Processing, Data Crawling, Data Science, Data Visualization, TensorFlow, Transformers',
+            image: '/EXIST2022.png',
+            link: 'https://www.researchgate.net/publication/352280581_Automatic_Sexism_Detection_with_Multilingual_Transformer_Models'
+          },
+          {
+            title: 'QuickSpeech',
+            description: 'Automatic Question and Answer Generation using Python.',
+            skills: 'Python, Natural Language Processing, Natural Language Generation, Data Crawling, Data Science',
+            image: '/quickspeech.png',
+            link: 'https://research.fhstp.ac.at/projekte/quickspeech-automatic-question-and-answer-generation'
+          }
+        ];
+        
+        // Function to create project cards for the featured section
+        function createFeaturedProjectCard(project) {
+            // Create card element
+            const card = document.createElement('div');
+            card.className = 'project-card';
+            
+            // Create image element
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'project-image';
+            
+            // Check if image path exists and set background image
+            if (project.image) {
+                imageDiv.style.backgroundImage = `url(images${project.image.startsWith('/') ? project.image : '/' + project.image})`;
+                imageDiv.style.backgroundSize = 'cover';
+                imageDiv.style.backgroundPosition = 'center';
+            } else {
+                imageDiv.classList.add('placeholder');
+            }
+            
+            // Add title
+            const title = document.createElement('h3');
+            title.textContent = project.title;
+            
+            // Add description
+            const description = document.createElement('p');
+            description.textContent = project.description;
+            
+            // Add link
+            const link = document.createElement('a');
+            link.className = 'project-link';
+            link.textContent = 'View Project';
+            link.href = project.link.startsWith('http') ? project.link : `images${project.link.startsWith('/') ? project.link : '/' + project.link}`;
+            
+            // Assemble the card
+            card.appendChild(imageDiv);
+            card.appendChild(title);
+            card.appendChild(description);
+            card.appendChild(link);
+            
+            return card;
+        }
+        
+        // Load featured projects when DOM is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM content loaded');
+            const featuredContainer = document.getElementById('featured-projects');
+            console.log('Featured container:', featuredContainer);
+            console.log('Projects data:', projects);
+            
+            if (!featuredContainer) {
+                console.error('Featured container not found!');
+                // Create a fallback container if it doesn't exist
+                const fallbackContainer = document.createElement('div');
+                fallbackContainer.id = 'featured-projects';
+                fallbackContainer.className = 'projects-grid';
+                document.querySelector('.featured-projects').appendChild(fallbackContainer);
+                console.log('Created fallback container');
+            }
+            
+            // Select 3 featured projects - using the first 3 for now
+            // You can customize this to select specific projects if needed
+            const featuredProjects = [
+                projects[0],  // PAFH
+                projects[2],  // Pingo
+                projects[4]   // realXplorer
+            ];
+            
+            console.log('Featured projects:', featuredProjects);
+            
+            // Create and append featured project cards
+            featuredProjects.forEach((project, index) => {
+                console.log(`Creating card for featured project ${index}:`, project.title);
+                const card = createFeaturedProjectCard(project);
+                document.getElementById('featured-projects').appendChild(card);
+                console.log(`Added card for ${project.title}`);
+            });
+        });
+    </script>
+</body>
+</html>
