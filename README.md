@@ -70,44 +70,38 @@ Since your GitHub username is "manhecht", you can host this site at manhecht.git
 6. Click Save
 7. Your site will be published at `https://manhecht.github.io/portfolio/`
 
-### Connecting Your Custom Domain (manuelhecht.com) from phpfriends
+### Automatic Deployment to phpfriends Webserver
 
-To connect your existing domain hosted at phpfriends to GitHub Pages:
+This repository is configured to automatically deploy to your phpfriends webserver whenever changes are pushed to the main branch. This is done using GitHub Actions and FTP deployment.
 
-1. **In your GitHub repository:**
-   - Go to Settings > Pages
-   - Under "Custom domain", enter `manuelhecht.com`
-   - Check "Enforce HTTPS" (recommended)
-   - Save the settings
+#### Setup Instructions
 
-2. **In your phpfriends DNS settings:**
-   - Log in to your phpfriends control panel
-   - Navigate to the DNS management section for manuelhecht.com
-   - Add the following DNS records:
-     
-     **Option 1: Apex domain (manuelhecht.com)**
-     Add these A records pointing to GitHub Pages' IP addresses:
-     ```
-     A    @    185.199.108.153
-     A    @    185.199.109.153
-     A    @    185.199.110.153
-     A    @    185.199.111.153
-     ```
-     
-     **Option 2: With www subdomain (www.manuelhecht.com)**
-     Add a CNAME record:
-     ```
-     CNAME    www    username.github.io.
-     ```
-     (Replace 'username' with your GitHub username)
+1. **Configure GitHub Repository Secrets:**
+   - Go to your GitHub repository
+   - Navigate to Settings > Secrets and variables > Actions
+   - Add the following secrets:
+     - `FTP_SERVER`: Your phpfriends FTP server address (e.g., `ftp.phpfriends.at`)
+     - `FTP_USERNAME`: Your phpfriends FTP username
+     - `FTP_PASSWORD`: Your phpfriends FTP password
 
-3. **Wait for DNS propagation:**
-   - DNS changes can take up to 24-48 hours to fully propagate
-   - You can check propagation using tools like [dnschecker.org](https://dnschecker.org)
+2. **How It Works:**
+   - When you push changes to the main branch, GitHub Actions will automatically:
+     - Checkout your repository
+     - Upload all files to your phpfriends webserver via FTP
+     - Exclude unnecessary files like .git directories and node_modules
 
-4. **Verify your domain:**
-   - GitHub will automatically verify your domain once DNS is properly configured
-   - A green checkmark will appear in the GitHub Pages settings when successful
+3. **Deployment Status:**
+   - You can check the status of deployments in the "Actions" tab of your GitHub repository
+   - Each deployment will show logs and any errors that occurred
+
+4. **Customizing Deployment:**
+   - The deployment configuration is in `.github/workflows/deploy.yml`
+   - You can modify this file to change deployment settings, such as:
+     - Which files to exclude from deployment
+     - Which directory on the server to deploy to
+     - Additional steps before or after deployment
+
+This setup ensures that your website at manuelhecht.com is always up-to-date with the latest changes in your repository.
 
 ## License
 

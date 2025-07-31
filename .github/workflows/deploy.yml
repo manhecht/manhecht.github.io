@@ -1,0 +1,31 @@
+name: Deploy to phpfriends
+
+on:
+  push:
+    branches:
+      - main  # Deploy when changes are pushed to the main branch
+
+jobs:
+  deploy:
+    name: Deploy to phpfriends webserver
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history for proper deployment
+      
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}  # Your phpfriends FTP server
+          username: ${{ secrets.FTP_USERNAME }}  # Your phpfriends FTP username
+          password: ${{ secrets.FTP_PASSWORD }}  # Your phpfriends FTP password
+          local-dir: ./  # The local directory to deploy
+          server-dir: ./  # The directory on the server to deploy to
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            README.md
