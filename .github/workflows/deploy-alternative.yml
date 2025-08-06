@@ -1,13 +1,17 @@
-name: Deploy to phpfriends
+name: Deploy to phpfriends (Alternative)
 
 on:
-  push:
-    branches:
-      - main  # Deploy when changes are pushed to the main branch
+  # This workflow is meant to be manually triggered if the primary deployment fails
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: 'Reason for manual deployment'
+        required: true
+        default: 'Primary deployment failed'
 
 jobs:
   deploy:
-    name: Deploy to phpfriends webserver
+    name: Deploy to phpfriends webserver (Alternative)
     runs-on: ubuntu-latest
     
     steps:
@@ -24,8 +28,8 @@ jobs:
         with:
           # These values reference secrets stored securely in GitHub repository settings
           # The actual values are never exposed in logs or to unauthorized users
-          # Use the correct hostname for the FTP server
-          server: ernie.php-friends.de  # The correct FTP server hostname
+          # Using alternative hostname that matches the SSL certificate
+          server: ernie.php-friends.de  # Alternative hostname from the SSL certificate
           username: ${{ secrets.FTP_USERNAME }}  # Should be set to 'gitactions' in GitHub Secrets
           password: ${{ secrets.FTP_PASSWORD }}  # Should be set to your password in GitHub Secrets
           protocol: ftps  # Use FTPS (FTP over SSL/TLS) as required by the server

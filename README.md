@@ -118,6 +118,32 @@ This repository is configured to automatically deploy to your phpfriends webserv
 
 This setup ensures that your website at manuelhecht.com is always up-to-date with the latest changes in your repository.
 
+#### Alternative Deployment Configuration
+
+An alternative deployment workflow has been created as a fallback option in case the primary deployment fails. This uses a different server hostname that matches the SSL certificate.
+
+1. **How to Use the Alternative Deployment:**
+   - The alternative deployment is configured in `.github/workflows/deploy-alternative.yml`
+   - It uses `ernie.php-friends.de` as the server hostname instead of `web67551.ssd-space.de`
+   - This workflow is not triggered automatically - it must be manually triggered
+   
+2. **Manually Triggering the Alternative Deployment:**
+   - Go to your GitHub repository
+   - Navigate to the "Actions" tab
+   - Select "Deploy to phpfriends (Alternative)" from the workflows list
+   - Click "Run workflow"
+   - Enter a reason for the manual deployment (e.g., "Primary deployment failed")
+   - Click "Run workflow" to start the deployment
+
+3. **When to Use:**
+   - Use this alternative deployment only if the primary automatic deployment fails
+   - Common reasons for failure might include:
+     - SSL certificate issues with the primary hostname
+     - Server maintenance on the primary hostname
+     - Network issues affecting the primary hostname
+
+Both deployment workflows use the same FTP credentials and deploy to the same directory (`manuelhecht.com`), so the end result will be identical regardless of which workflow is used.
+
 #### Security of GitHub Workflows
 
 You might notice that the `.github/workflows/deploy.yml` file is committed to the repository and visible to anyone who has access to the repository. This is normal and secure because:
